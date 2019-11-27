@@ -1,0 +1,27 @@
+<h2>Новинки</h2>
+
+<div *ngFor="let product of products" class="products">
+
+	<div class="product">
+
+		<h3 class="prod_name">
+			<a [title]="product.name + ' details'">
+				{{ product.name }}
+			</a>
+		</h3>
+		<p class="prod_price">Цена: {{product.price}} руб.</p>
+		<p *ngIf="product.description" class="prod_desc">
+			Описание: {{ product.description }}
+		</p>
+
+
+		<button (click)="share()" class="btn_shr" >Поделиться</button>
+	</div>
+
+	<app-product-alerts
+   [product]="product"
+  (notify)="onNotify()"> 
+	</app-product-alerts>
+
+
+</div>
